@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Tesla 369 Bot - Seu Bot de Opções Binárias no Celular</title>
+    <style>
+        :root { --bg: #050510; --card: #0a0a2e; --gold: #ffd700; --green: #00ff88; --text: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) ease-in-out infinite; opacity: 0; }
+        @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:1;transform:scale(1.5)} }
+        .container { max-width: 700px; margin: 0 auto; padding: 15px; position: relative; z-index: 1; }
+        .hero { text-align: center; padding: 40px 15px 20px; }
+        .logo { font-size: 70px; animation: float 3s ease-in-out infinite; filter: drop-shadow(0 0 40px rgba(255,215,0,0.7)); }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+        h1 { font-size: 2.5em; background: linear-gradient(135deg, #ffd700, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; margin: 10px 0; }
+        .card { background: var(--card); border: 1px solid rgba(255,215,0,0.2); border-radius: 18px; padding: 25px 20px; margin: 20px 0; }
+        .card h2 { color: var(--gold); font-size: 1.3em; margin-bottom: 15px; }
+        .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+        @media (min-width: 500px) { .features { grid-template-columns: repeat(3, 1fr); } }
+        .feature { text-align: center; padding: 15px 10px; background: rgba(255,255,255,0.03); border-radius: 12px; }
+        .feature .icon { font-size: 1.8em; margin-bottom: 5px; }
+        .feature span { color: var(--gold); font-weight: bold; font-size: 0.85em; }
+        .code-block { background: #000; border: 1px solid #333; border-radius: 14px; padding: 18px; margin: 15px 0; position: relative; }
+        .code-block code { color: #00ff88; font-family: 'Courier New', monospace; font-size: 0.75em; word-break: break-all; line-height: 1.7; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.85em; }
+        .step { display: flex; gap: 15px; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .step-num { background: var(--gold); color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1em; flex-shrink: 0; }
+        .step-content h4 { color: #fff; margin-bottom: 5px; }
+        .step-content p { color: #999; line-height: 1.6; font-size: 0.9em; }
+        .playstore-btn { display: flex; align-items: center; justify-content: center; gap: 12px; background: #fff; color: #000; padding: 18px 30px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 1.2em; margin: 15px auto; max-width: 350px; box-shadow: 0 8px 30px rgba(255,255,255,0.15); }
+        .what-is { background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); border-radius: 15px; padding: 20px; margin: 20px 0; }
+        .what-is h3 { color: var(--green); margin-bottom: 10px; }
+        .what-is p { color: #bbb; line-height: 1.8; font-size: 0.95em; }
+        .mantra { color: var(--gold); text-align: center; margin: 25px 0; font-size: 1.1em; font-weight: bold; animation: glow 2s ease-in-out infinite; }
+        @keyframes glow { 0%,100%{text-shadow:0 0 15px rgba(255,215,0,0.4)} 50%{text-shadow:0 0 40px rgba(255,215,0,0.9)} }
+        .footer { text-align: center; padding: 30px 20px; color: #555; font-size: 0.85em; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <div class="hero">
+            <div class="logo">⚡</div>
+            <h1>TESLA 369 BOT</h1>
+            <p style="color:#aaa;font-size:1.1em">Robô automatizado de trades na IQ Option.<br>Roda no seu celular com <strong style="color:#ffd700">seu IP</strong>.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature"><div class="icon">🧠</div><span>8 Estratégias</span></div>
+            <div class="feature"><div class="icon">🎨</div><span>12 Skins</span></div>
+            <div class="feature"><div class="icon">💬</div><span>Chat Online</span></div>
+            <div class="feature"><div class="icon">🏆</div><span>Ranking</span></div>
+            <div class="feature"><div class="icon">📱</div><span>IP Celular</span></div>
+            <div class="feature"><div class="icon">🆓</div><span>3 Grátis</span></div>
+        </div>
+        
+        <div class="what-is">
+            <h3>📱 Por que precisa do Termux?</h3>
+            <p>O Termux é um terminal Linux que roda no seu Android. O bot usa ele para operar <strong>diretamente do seu celular</strong>, com seu 4G/WiFi. Assim a IQ Option vê <strong>seu IP pessoal</strong>, evitando bloqueios de servidores compartilhados.</p>
+        </div>
+        
+        <div class="card">
+            <h2>📲 Instalação (1ª vez)</h2>
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Baixe o Termux</h4><p>App gratuito da Play Store</p><a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank" class="playstore-btn" style="margin:10px 0;font-size:1em;padding:12px 20px">▶️ Baixar Termux</a></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Abra o Termux e cole:</h4><div class="code-block"><code>bash <(curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/main/install.sh)</code><button class="copy-btn" onclick="copiar(this)">📋</button></div><p style="color:#00ff88">✅ Isso instala tudo e cria o atalho <strong>tesla</strong></p></div></div>
+        </div>
+        
+        <div class="card">
+            <h2>🚀 Iniciar o bot</h2>
+            <p style="color:#bbb;margin-bottom:15px">Depois de instalado, é só digitar no Termux:</p>
+            <div class="code-block"><code>tesla</code><button class="copy-btn" onclick="copiar(this)">📋</button></div>
+            <p style="color:#00ff88;text-align:center;margin-top:10px">O Chrome abre automaticamente!</p>
+        </div>
+        
+        <div class="card">
+            <h2>⌨️ Comandos</h2>
+            <div class="step"><div class="step-num">🚀</div><div class="step-content"><h4>Iniciar</h4><p><code style="color:#00ff88;background:#000;padding:3px 8px;border-radius:4px">tesla</code></p></div></div>
+            <div class="step"><div class="step-num">🛑</div><div class="step-content"><h4>Parar</h4><p>Clique em <strong>DESCONECTAR</strong> no bot</p></div></div>
+            <div class="step"><div class="step-num">📱</div><div class="step-content"><h4>Tela inicial</h4><p>Chrome > 3 pontinhos ⋮ > Adicionar à tela</p></div></div>
+        </div>
+        
+        <div class="mantra">🌀 O DINHEIRO VEM ATÉ MIM DE TODOS OS LADOS 🌀</div>
+        <div class="footer"><p>⚡ Tesla 369 Bot v6.5.0</p></div>
+    </div>
+    <script>
+        for (let i=0;i<60;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.width=(Math.random()*2+1)+'px';s.style.height=s.style.width;s.style.setProperty('--d',(Math.random()*3+2)+'s');s.style.animationDelay=Math.random()*5+'s';document.getElementById('stars').appendChild(s)}
+        function copiar(btn){const code=btn.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(code).then(()=>alert('✅ Copiado!'))}
+    </script>
+</body>
+</html>
