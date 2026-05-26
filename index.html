@@ -10,7 +10,6 @@
             --card: #0a0a25;
             --gold: #f0c040;
             --green: #00e676;
-            --red: #ff4444;
             --text: #d0d0e0;
             --muted: #707090;
             --border: rgba(255,255,255,0.06);
@@ -21,206 +20,25 @@
             color: var(--text);
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
-            background-image: 
-                radial-gradient(ellipse at 20% 0%, rgba(120,80,255,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(255,180,0,0.05) 0%, transparent 50%);
+            overflow-x: hidden;
         }
-        .container { max-width: 680px; margin: 0 auto; padding: 20px; }
-        
-        /* HEADER */
-        .header {
-            text-align: center;
-            padding: 50px 20px 30px;
-            position: relative;
-        }
-        .logo {
-            font-size: 60px;
-            display: inline-block;
-            animation: pulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(240,192,64,0.5));
-        }
-        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
-        .header h1 {
-            font-size: 2.6em;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #f0c040 0%, #ff8c00 50%, #f0c040 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-            margin: 10px 0;
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-        .header .subtitle {
-            color: var(--muted);
-            font-size: 1.05em;
-            max-width: 450px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* STATS */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin: 20px 0;
-        }
-        .stat {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 18px 10px;
-            text-align: center;
-        }
-        .stat .num {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        .stat .label {
-            font-size: 0.75em;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-        .stat .badge {
-            display: inline-block;
-            background: rgba(0,230,118,0.15);
-            color: var(--green);
-            font-size: 0.6em;
-            padding: 3px 8px;
-            border-radius: 10px;
-            margin-top: 5px;
-            font-weight: 600;
-        }
-        
-        /* CARDS */
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 25px 22px;
-            margin: 18px 0;
-        }
-        .card h2 {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .card h2 .icon { font-size: 1.3em; }
-        
-        /* CODE */
-        .code-box {
-            background: #000;
-            border: 1px solid #1a1a3a;
-            border-radius: 12px;
-            padding: 16px 18px;
-            position: relative;
-            margin: 12px 0;
-        }
-        .code-box code {
-            color: var(--green);
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.78em;
-            word-break: break-all;
-            line-height: 1.8;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 0.8em;
-            transition: all .2s;
-        }
-        .copy-btn:hover { transform: scale(1.05); }
-        
-        /* BUTTONS */
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 24px;
-            border-radius: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1em;
-            transition: all .25s;
-            margin: 8px 0;
-        }
-        .btn-playstore {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 6px 25px rgba(255,255,255,0.12);
-        }
-        .btn-playstore:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(255,255,255,0.2); }
-        .btn-download {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: #fff;
-            box-shadow: 0 6px 25px rgba(37,99,235,0.3);
-        }
-        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(37,99,235,0.45); }
-        
-        /* STEPS */
-        .step {
-            display: flex;
-            gap: 14px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .step:last-child { border-bottom: none; }
-        .step-num {
-            background: var(--gold);
-            color: #000;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.9em;
-            flex-shrink: 0;
-        }
-        .step-text h4 { color: #fff; font-size: 0.95em; margin-bottom: 3px; }
-        .step-text p { color: var(--muted); font-size: 0.82em; line-height: 1.5; }
-        
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #404060;
-            font-size: 0.8em;
-            border-top: 1px solid var(--border);
-            margin-top: 30px;
-        }
-        .mantra {
-            color: var(--gold);
-            text-align: center;
-            font-weight: 700;
-            margin: 20px 0;
-            font-size: 1em;
-            letter-spacing: 1px;
-            animation: glow 2s ease-in-out infinite;
-        }
-        @keyframes glow { 0%,100%{text-shadow:0 0 10px rgba(240,192,64,0.3)} 50%{text-shadow:0 0 30px rgba(240,192,64,0.7)} }
-        
-        /* PARTICLES */
-        .particles {
+        .container { max-width: 720px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+
+        /* FUNDO ANIMADO */
+        .bg-anim {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 0;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: orbFloat var(--d) ease-in-out infinite;
+        }
+        @keyframes orbFloat {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-40px) scale(1.2); }
+            66% { transform: translate(-20px,30px) scale(0.9); }
         }
         .particle {
             position: absolute;
@@ -235,17 +53,274 @@
             90% { opacity: 0.5; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+        .logo {
+            font-size: 80px;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 50px rgba(240,192,64,0.6));
+        }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+        .header h1 {
+            font-size: 3em;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #f0c040 0%, #ff8c00 50%, #f0c040 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            margin: 15px 0;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        .header .subtitle {
+            color: var(--muted);
+            font-size: 1.1em;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .badge-new {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4444, #ff6600);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: pulse 1.5s ease-in-out infinite;
+            margin-bottom: 12px;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 30px 0;
+        }
+        .stat {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 12px;
+            text-align: center;
+            transition: all .3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 40px rgba(240,192,64,0.1);
+        }
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(240,192,64,0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .stat:hover::before { opacity: 1; }
+        .stat .num {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--gold);
+            position: relative;
+        }
+        .stat .label {
+            font-size: 0.8em;
+            color: var(--muted);
+            margin-top: 5px;
+            position: relative;
+        }
+        .stat .badge {
+            display: inline-block;
+            background: rgba(0,230,118,0.15);
+            color: var(--green);
+            font-size: 0.65em;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 8px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin: 22px 0;
+            transition: all .3s;
+        }
+        .card:hover {
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+        .card h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card h2 .icon { font-size: 1.4em; }
+        .card h3 {
+            color: var(--gold);
+            font-size: 1em;
+            margin: 18px 0 8px;
+        }
+        .card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        /* CODE */
+        .code-box {
+            background: #000;
+            border: 1px solid #1a1a3a;
+            border-radius: 14px;
+            padding: 18px 20px;
+            position: relative;
+            margin: 15px 0;
+        }
+        .code-box code {
+            color: var(--green);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.8em;
+            word-break: break-all;
+            line-height: 1.9;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all .2s;
+        }
+        .copy-btn:hover { transform: scale(1.05); }
+
+        /* BUTTONS */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all .25s;
+            margin: 10px 0;
+        }
+        .btn-playstore {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 6px 25px rgba(255,255,255,0.12);
+        }
+        .btn-playstore:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(255,255,255,0.2); }
+        .btn-download {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            box-shadow: 0 6px 25px rgba(37,99,235,0.3);
+        }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(37,99,235,0.45); }
+
+        /* STEPS */
+        .step {
+            display: flex;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .step:last-child { border-bottom: none; }
+        .step-num {
+            background: var(--gold);
+            color: #000;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.95em;
+            flex-shrink: 0;
+        }
+        .step-text h4 { color: #fff; font-size: 1em; margin-bottom: 4px; }
+        .step-text p { color: var(--muted); font-size: 0.85em; line-height: 1.6; }
+
+        /* EXPLANATION BOX */
+        .explain-box {
+            background: rgba(240,192,64,0.03);
+            border: 1px solid rgba(240,192,64,0.15);
+            border-radius: 16px;
+            padding: 22px;
+            margin: 15px 0;
+        }
+        .explain-box p {
+            color: #c0b0a0;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+        .explain-box strong { color: var(--gold); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 35px 20px;
+            color: #404060;
+            font-size: 0.85em;
+            border-top: 1px solid var(--border);
+            margin-top: 35px;
+        }
+        .mantra {
+            color: var(--gold);
+            text-align: center;
+            font-weight: 700;
+            margin: 25px 0;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes glow { 0%,100%{text-shadow:0 0 10px rgba(240,192,64,0.3)} 50%{text-shadow:0 0 35px rgba(240,192,64,0.7)} }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
+    <div class="bg-anim" id="bgAnim"></div>
     <div class="container">
         
         <!-- HEADER -->
         <div class="header">
+            <div class="badge-new">⚡ NOVA VERSÃO 6.5.1</div>
             <div class="logo">⚡</div>
             <h1>TESLA 369</h1>
-            <p class="subtitle">Ferramenta profissional de automação de trades na IQ Option. Estratégias avançadas, atualizações constantes e execução precisa.</p>
+            <p class="subtitle">Ferramenta profissional de automação de trades na IQ Option.<br>Estratégias avançadas, atualizações constantes e execução precisa.</p>
         </div>
         
         <!-- STATS -->
@@ -253,6 +328,16 @@
             <div class="stat"><div class="num">8+</div><div class="label">Estratégias</div><div class="badge">Novas em breve</div></div>
             <div class="stat"><div class="num">12+</div><div class="label">Temas</div><div class="badge">Sempre atualizado</div></div>
             <div class="stat"><div class="num">3</div><div class="label">Grátis</div><div class="badge">Uso ilimitado</div></div>
+        </div>
+        
+        <!-- O QUE É TESLA 369 -->
+        <div class="card">
+            <h2><span class="icon">🧠</span> O que é o Tesla 369?</h2>
+            <div class="explain-box">
+                <p>O <strong>Tesla 369</strong> é um robô de <strong>análise técnica automatizada</strong> que opera na plataforma IQ Option. Ele analisa <strong>padrões de velas</strong> em tempo real usando indicadores como <strong>RSI, Bandas de Bollinger, MACD, Médias Móveis e Estocástico</strong>.</p>
+                <p style="margin-top:10px">Quando encontra uma oportunidade com <strong>alta probabilidade de acerto</strong>, o robô abre uma ordem automaticamente — <strong>CALL</strong> (compra) ou <strong>PUT</strong> (venda) — baseado no padrão identificado. O gerenciamento de risco é feito com <strong>Martingale de 2 níveis</strong> e <strong>Stop Gain</strong> (1 vitória = pausa automática).</p>
+                <p style="margin-top:10px">🔥 <strong>Firebase Realtime Database</strong>: todos os dados são salvos na nuvem em tempo real. Sem arquivos locais. Sem complicação.</p>
+            </div>
         </div>
         
         <!-- INSTALAÇÃO CELULAR -->
@@ -263,7 +348,7 @@
                 <div class="step-num">1</div>
                 <div class="step-text">
                     <h4>Instale o Termux</h4>
-                    <p>App oficial da Play Store — um terminal Linux seguro e confiável.</p>
+                    <p>App oficial da Play Store — um terminal Linux seguro e confiável usado por milhões.</p>
                     <a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank" class="btn btn-playstore" style="margin-top:8px">
                         ▶️ Baixar Termux
                     </a>
@@ -279,6 +364,7 @@
                         <code>bash <(curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/main/install.sh)</code>
                         <button class="copy-btn" onclick="copiar(this)">📋 Copiar</button>
                     </div>
+                    <p style="color:var(--green);font-size:0.8em">✅ Instala tudo automaticamente</p>
                 </div>
             </div>
             
@@ -294,7 +380,7 @@
         <!-- DOWNLOAD PC -->
         <div class="card">
             <h2><span class="icon">💻</span> Versão para Windows</h2>
-            <p style="color:var(--muted);margin-bottom:12px;line-height:1.6">Executável portátil. Sem instalação. Duplo clique e o navegador abre pronto para usar.</p>
+            <p style="color:var(--muted);margin-bottom:12px;line-height:1.6">Executável portátil. Sem instalação. Duplo clique e o navegador abre pronto para usar. O executável baixa sempre a versão mais recente do bot.</p>
             <a href="https://github.com/gynbetfc/v-sensitivo-bot/raw/main/dist/Tesla369.exe" class="btn btn-download">
                 ⚡ Baixar Tesla369.exe
             </a>
@@ -314,30 +400,43 @@
         <div class="mantra">🌀 O DINHEIRO VEM ATÉ MIM DE TODOS OS LADOS 🌀</div>
         
         <div class="footer">
-            <p>TESLA 369 Bot v6.5.1</p>
-            <p style="margin-top:4px">Ferramenta de automação — use com responsabilidade</p>
+            <p>⚡ TESLA 369 Bot v6.5.1</p>
+            <p style="margin-top:6px">Ferramenta de automação — use com responsabilidade</p>
         </div>
     </div>
     
     <script>
+        // Orbs animados
+        const bg = document.getElementById('bgAnim');
+        const cores = ['rgba(120,80,255,0.12)', 'rgba(240,192,64,0.08)', 'rgba(0,180,255,0.06)'];
+        for(let i=0;i<3;i++){
+            const orb = document.createElement('div');
+            orb.className = 'orb';
+            orb.style.width = (200+Math.random()*300)+'px';
+            orb.style.height = orb.style.width;
+            orb.style.background = cores[i];
+            orb.style.top = (20+Math.random()*60)+'%';
+            orb.style.left = (10+Math.random()*80)+'%';
+            orb.style.setProperty('--d', (6+Math.random()*6)+'s');
+            bg.appendChild(orb);
+        }
         // Partículas
-        const pc = document.getElementById('particles');
-        for(let i=0;i<35;i++){
-            const p=document.createElement('div');
-            p.className='particle';
-            p.style.left=Math.random()*100+'%';
-            p.style.width=(Math.random()*3+1)+'px';
-            p.style.height=p.style.width;
-            p.style.setProperty('--d',(Math.random()*8+6)+'s');
-            p.style.animationDelay=Math.random()*8+'s';
-            pc.appendChild(p);
+        for(let i=0;i<40;i++){
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random()*100+'%';
+            p.style.width = (Math.random()*3+1)+'px';
+            p.style.height = p.style.width;
+            p.style.setProperty('--d', (Math.random()*8+6)+'s');
+            p.style.animationDelay = Math.random()*8+'s';
+            bg.appendChild(p);
         }
         
         function copiar(btn){
-            const code=btn.parentElement.querySelector('code').innerText;
+            const code = btn.parentElement.querySelector('code').innerText;
             navigator.clipboard.writeText(code).then(()=>{
-                btn.textContent='✅ Copiado!';
-                setTimeout(()=>btn.textContent='📋 Copiar',2000);
+                btn.textContent = '✅ Copiado!';
+                setTimeout(()=>btn.textContent = '📋 Copiar', 2000);
             });
         }
     </script>
