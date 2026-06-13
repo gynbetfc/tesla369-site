@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESLA 369 | Bot de Trading Automatizado</title>
+    <title>TESLA 369 | Plataforma SaaS de Trading Quantitativo</title>
     <style>
         :root {
-            --bg: #020012;
-            --card: #0a0a25;
-            --gold: #f0c040;
+            --bg: #020014;
+            --card: #06051a;
+            --card-inner: #0b0a26;
+            --gold: #f3c244;
+            --gold-glow: rgba(243, 194, 68, 0.15);
             --green: #00e676;
-            --blue: #3399ff;
-            --text: #d0d0e0;
-            --muted: #707090;
-            --border: rgba(255,255,255,0.06);
+            --blue: #00b0ff;
+            --text: #e5e5f5;
+            --muted: #7e7e9a;
+            --border: rgba(243, 194, 68, 0.08);
+            --gradient-tesla: linear-gradient(135deg, #f3c244 0%, #ff5100 50%, #f3c244 100%);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -23,76 +26,81 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
 
         /* FUNDO ANIMADO */
         .bg-anim { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orbFloat var(--d) ease-in-out infinite; }
-        @keyframes orbFloat { 0%,100%{transform:translate(0,0)scale(1)} 33%{transform:translate(30px,-40px)scale(1.2)} 66%{transform:translate(-20px,30px)scale(0.9)} }
+        .orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: orbFloat var(--d) ease-in-out infinite; }
+        @keyframes orbFloat { 0%,100%{transform:translate(0,0)scale(1)} 33%{transform:translate(50px,-60px)scale(1.2)} 66%{transform:translate(-40px,50px)scale(0.85)} }
         .particle { position: absolute; background: var(--gold); border-radius: 50%; animation: floatUp var(--d) linear infinite; opacity: 0; }
         @keyframes floatUp { 0%{transform:translateY(100vh)scale(0);opacity:0} 10%{opacity:1} 90%{opacity:.5} 100%{transform:translateY(-10vh)scale(1);opacity:0} }
 
         /* HEADER */
-        .header { text-align: center; padding: 60px 20px 40px; }
-        .logo { font-size: 80px; display: inline-block; animation: pulse 2s ease-in-out infinite; filter: drop-shadow(0 0 50px rgba(240,192,64,0.6)); }
-        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-        .header h1 { font-size: 3em; font-weight: 900; letter-spacing: -2px; background: linear-gradient(135deg,#f0c040 0%,#ff8c00 50%,#f0c040 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shine 3s linear infinite; margin:15px 0; }
-        @keyframes shine { to{background-position:200% center} }
-        .badge-new { display: inline-block; background: linear-gradient(135deg,#ff4444,#ff6600); color:#fff; padding:5px 14px; border-radius:20px; font-size:.75em; font-weight:700; letter-spacing:1px; animation:pulse 1.5s ease-in-out infinite; margin-bottom:12px; }
-        .header .subtitle { color: var(--muted); font-size: 1.1em; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+        .header { text-align: center; padding: 80px 20px 50px; }
+        .logo { font-size: 85px; display: inline-block; animation: pulse 2s ease-in-out infinite; filter: drop-shadow(0 0 45px rgba(243,194,68,0.5)); }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+        .header h1 { font-size: 4em; font-weight: 900; letter-spacing: -2px; background: var(--gradient-tesla); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 4s linear infinite; margin: 10px 0; }
+        @keyframes shine { to{background-position: 200% center} }
+        .badge-saas { display: inline-block; background: rgba(243, 194, 68, 0.08); border: 1px solid var(--gold); color: var(--gold); padding: 6px 18px; border-radius: 20px; font-size: .75em; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; box-shadow: 0 0 15px var(--gold-glow); }
+        .header .subtitle { color: var(--muted); font-size: 1.2em; max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
-        /* STATS */
-        .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 30px 0; }
-        .stat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 12px; text-align: center; transition: all .3s; position: relative; overflow: hidden; cursor: default; }
-        .stat:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 10px 40px rgba(240,192,64,0.1); }
-        .stat .num { font-size: 2em; font-weight: 800; color: var(--gold); position: relative; }
-        .stat .label { font-size: .8em; color: var(--muted); margin-top: 5px; position: relative; }
-        .stat .badge { display: inline-block; background: rgba(0,230,118,0.15); color: var(--green); font-size: .65em; padding: 4px 10px; border-radius: 12px; margin-top: 8px; font-weight: 600; }
+        /* SEÇÃO DE MÉTRICAS */
+        .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; margin: 20px 0 40px; }
+        .stat { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 25px 15px; text-align: center; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .stat:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(243,194,68,0.12); }
+        .stat .num { font-size: 2.2em; font-weight: 900; color: #fff; letter-spacing: -1px; }
+        .stat .num-gold { color: var(--gold); text-shadow: 0 0 15px rgba(243,194,68,0.3); }
+        .stat .label { font-size: .8em; color: var(--muted); margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* CARDS */
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px 25px; margin: 22px 0; transition: all .3s; }
-        .card:hover { border-color: rgba(255,255,255,0.12); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
-        .card h2 { font-size: 1.3em; font-weight: 700; color: #fff; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
-        .card h2 .icon { font-size: 1.4em; }
-        .card h3 { color: var(--gold); font-size: 1em; margin: 18px 0 8px; }
-        .card p { color: var(--muted); line-height: 1.7; font-size: .9em; margin-bottom: 10px; }
+        /* CARDS PRINCIPAIS */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 28px; padding: 35px; margin: 30px 0; transition: all .3s ease; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: transparent; transition: background 0.3s; }
+        .card:hover::before { background: var(--gradient-tesla); }
+        .card h2 { font-size: 1.6em; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.5px; }
+        .card h2 .icon { font-size: 1.2em; filter: drop-shadow(0 0 10px var(--gold)); }
+        .card p { color: var(--muted); line-height: 1.8; font-size: 1em; margin-bottom: 15px; }
 
-        /* CODE */
-        .code-box { background: #000; border: 1px solid #1a1a3a; border-radius: 14px; padding: 18px 20px; position: relative; margin: 15px 0; }
-        .code-box code { color: var(--green); font-family: 'JetBrains Mono','Courier New',monospace; font-size: .8em; word-break: break-all; line-height: 1.9; }
-        .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--gold); color: #000; border: none; padding: 7px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: .8em; transition: all .2s; }
-        .copy-btn:hover { transform: scale(1.05); }
+        /* ENGENHARIA INTERNA DO BOT */
+        .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 25px 0 10px; }
+        .tech-box { background: var(--card-inner); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 20px; }
+        .tech-box h3 { color: var(--gold); font-size: 1.1em; margin-bottom: 8px; font-weight: 700; }
+        .tech-box p { font-size: 0.88em; color: #a5a5c0; margin: 0; line-height: 1.6; }
+
+        /* LOJA DE ESTRATÉGIAS PREMIUM */
+        .strat-badge { background: rgba(0, 230, 118, 0.1); color: var(--green); padding: 2px 8px; border-radius: 6px; font-size: 0.75em; font-weight: 700; margin-left: auto; border: 1px solid rgba(0, 230, 118, 0.2); }
+        .strat-badge.pro { color: var(--blue); background: rgba(0, 176, 255, 0.1); border-color: rgba(0, 176, 255, 0.2); }
+        .feat-list { list-style: none; padding: 0; margin: 15px 0; }
+        .feat-list li { padding: 14px 0; color: #c5c5dc; font-size: 0.95em; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .feat-list li:last-child { border-bottom: none; }
+        .feat-list li::before { content: '⚡'; color: var(--gold); font-weight: bold; font-size: 0.9em; }
+
+        /* INFO BOXES / ALERTS */
+        .explain-box { background: rgba(243, 194, 68, 0.02); border: 1px solid rgba(243, 194, 68, 0.12); border-radius: 20px; padding: 25px; margin: 20px 0; }
+        .explain-box p { color: #c8c8df; font-size: 0.95em; line-height: 1.8; margin-bottom: 0; }
+        .explain-box strong { color: var(--gold); }
+        .highlight { background: rgba(0, 230, 118, 0.04); border-left: 4px solid var(--green); padding: 16px 20px; border-radius: 0 16px 16px 0; margin: 20px 0; }
+        .highlight p { color: #b5d8c7; font-size: 0.9em; margin: 0; line-height: 1.7; }
+
+        /* INSTALAÇÃO E CÓDIGOS */
+        .code-title { font-size: 0.85em; color: var(--gold); font-weight: 600; margin-bottom: 8px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .code-box { background: #000; border: 1px solid #13122b; border-radius: 16px; padding: 20px; position: relative; margin: 10px 0 25px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); }
+        .code-box code { color: #33ff99; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: .85em; word-break: break-all; line-height: 2; }
+        .copy-btn { position: absolute; top: 14px; right: 14px; background: var(--gold); color: #000; border: none; padding: 6px 16px; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: .75em; transition: all .2s; }
+        .copy-btn:hover { transform: scale(1.05); background: #fff; }
 
         /* BUTTONS */
-        .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; border-radius: 14px; font-weight: 700; text-decoration: none; font-size: 1em; transition: all .25s; margin: 10px 0; }
-        .btn-playstore { background: #fff; color: #000; box-shadow: 0 6px 25px rgba(255,255,255,0.12); }
-        .btn-playstore:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(255,255,255,0.2); }
-        .btn-download { background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #fff; box-shadow: 0 6px 25px rgba(37,99,235,0.3); }
-        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(37,99,235,0.45); }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 32px; border-radius: 18px; font-weight: 800; text-decoration: none; font-size: 1.05em; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); margin: 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-saas { background: var(--gradient-tesla); color: #000; box-shadow: 0 8px 32px rgba(243,194,68,0.3); }
+        .btn-saas:hover { transform: translateY(-3px); box-shadow: 0 12px 45px rgba(243,194,68,0.5); color: #000; }
 
-        /* STEPS */
-        .step { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .step:last-child { border-bottom: none; }
-        .step-num { background: var(--gold); color: #000; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95em; flex-shrink: 0; }
-        .step-text h4 { color: #fff; font-size: 1em; margin-bottom: 4px; }
-        .step-text p { color: var(--muted); font-size: .85em; line-height: 1.6; }
-
-        /* EXPLAIN BOX */
-        .explain-box { background: rgba(240,192,64,0.03); border: 1px solid rgba(240,192,64,0.15); border-radius: 16px; padding: 22px; margin: 15px 0; }
-        .explain-box p { color: #c0b0a0; font-size: .9em; line-height: 1.8; }
-        .explain-box strong { color: var(--gold); }
-        .highlight { background: rgba(0,230,118,0.08); border-left: 3px solid var(--green); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
-        .highlight p { color: #b0d0c0; font-size: .85em; }
-
-        /* FEATURE LIST */
-        .feat-list { list-style: none; padding: 0; }
-        .feat-list li { padding: 8px 0; color: var(--muted); font-size: .9em; display: flex; align-items: center; gap: 10px; }
-        .feat-list li::before { content: '⚡'; color: var(--gold); font-size: .8em; }
+        /* INFRASTRUCTURE BADGES */
+        .infra-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .infra-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 6px 14px; border-radius: 10px; font-size: 0.8em; color: #9da0bd; font-family: 'JetBrains Mono', monospace; }
 
         /* FOOTER */
-        .footer { text-align: center; padding: 35px 20px; color: #404060; font-size: .85em; border-top: 1px solid var(--border); margin-top: 35px; }
-        .mantra { color: var(--gold); text-align: center; font-weight: 700; margin: 25px 0; font-size: 1.1em; letter-spacing: 2px; animation: glow 2s ease-in-out infinite; }
-        @keyframes glow { 0%,100%{text-shadow:0 0 10px rgba(240,192,64,0.3)} 50%{text-shadow:0 0 35px rgba(240,192,64,0.7)} }
+        .footer { text-align: center; padding: 50px 20px; color: #43435e; font-size: .85em; border-top: 1px solid rgba(255,255,255,0.03); margin-top: 20px; }
+        .mantra { color: var(--gold); text-align: center; font-weight: 700; margin: 40px 0; font-size: 1.3em; letter-spacing: 4px; animation: glow 2s ease-in-out infinite; }
+        @keyframes glow { 0%,100%{text-shadow:0 0 10px rgba(243,194,68,0.2)} 50%{text-shadow:0 0 35px rgba(243,194,68,0.65)} }
     </style>
 </head>
 <body>
@@ -101,120 +109,125 @@
         
         <!-- HEADER -->
         <div class="header">
-            <div class="badge-new">⚡ NOVA VERSÃO 6.5.1</div>
+            <div class="badge-saas">⚡ TECNOLOGIA QUANTITATIVA V6.5.1</div>
             <div class="logo">⚡</div>
             <h1>TESLA 369</h1>
-            <p class="subtitle">Ferramenta profissional de automação de trades na IQ Option.<br>Estratégias avançadas, atualizações constantes e execução precisa.</p>
+            <p class="subtitle">A plataforma SaaS definitiva que automatiza suas operações na IQ Option. Alta frequência, inteligência matemática e execução cirúrgica.</p>
         </div>
         
-        <!-- STATS -->
+        <!-- DASHBOARD METRICS -->
         <div class="stats">
-            <div class="stat"><div class="num">8+</div><div class="label">Estratégias</div><div class="badge">Novas na Loja</div></div>
-            <div class="stat"><div class="num">12+</div><div class="label">Temas</div><div class="badge">Sempre atualizado</div></div>
-            <div class="stat"><div class="num">1⚡</div><div class="label">Grátis/dia</div><div class="badge">Uso ilimitado</div></div>
+            <div class="stat"><div class="num num-gold">1 WIN</div><div class="label">Meta Diária Segura</div></div>
+            <div class="stat"><div class="num">Cloud</div><div class="label">Hospedagem Firebase</div></div>
+            <div class="stat"><div class="num text-green">M2</div><div class="label">Martingale Inteligente</div></div>
+        </div>
+
+        <!-- O QUE É A PLATAFORMA SAAS -->
+        <div class="card">
+            <h2><span class="icon">🧠</span> Inteligência de Dados Automatizada</h2>
+            <p>O <strong>Tesla 369</strong> não é apenas um script de trading — é uma **plataforma SaaS completa de geração de receita passiva**. O sistema roda conectando diretamente as requisições do seu terminal aos servidores de alta frequência da corretora.</p>
+            <p>Em vez de prender você na frente do computador analisando velas, nossa arquitetura analisa múltiplos indicadores simultaneamente em milissegundos. Quando a probabilidade matemática atinge o teto estipulado, o bot executa a ordem (<strong>CALL/PUT</strong>) de forma autônoma.</p>
+            <a href="#" class="btn btn-saas">Acessar Painel de Controle SaaS</a>
         </div>
         
-        <!-- O QUE É TESLA 369 -->
+        <!-- COMO O BOT FUNCIONA INTERNAMENTE -->
         <div class="card">
-            <h2><span class="icon">🧠</span> O que é o Tesla 369?</h2>
-            <div class="explain-box">
-                <p>O <strong>Tesla 369</strong> é um robô de <strong>análise técnica automatizada</strong> que opera na plataforma IQ Option. Ele analisa <strong>padrões de velas</strong> em tempo real usando indicadores como <strong>RSI, Bandas de Bollinger, MACD, Médias Móveis e Estocástico</strong>.</p>
-                <p style="margin-top:10px">Quando encontra uma oportunidade com <strong>alta probabilidade de acerto</strong>, o robô abre uma ordem automaticamente — <strong>CALL</strong> (compra) ou <strong>PUT</strong> (venda) — baseado no padrão identificado.</p>
-            </div>
-        </div>
-        
-        <!-- ESTRATÉGIAS -->
-        <div class="card">
-            <h2><span class="icon">📊</span> Estratégias Disponíveis</h2>
-            <p>A Loja de Estratégias é <strong>constantemente atualizada</strong> com novos métodos. Confira algumas:</p>
-            <ul class="feat-list">
-                <li><strong style="color:#fff">⚡ Tesla-369</strong> — Padrão de 6 velas (g-g-g-r-r / r-r-r-g-g) — <span style="color:var(--green)">GRÁTIS</span></li>
-                <li><strong style="color:#fff">🔮 v_SENSITIVO</strong> — RSI + MM + Bollinger + MACD + Estocástico + Fase da Vela</li>
-                <li><strong style="color:#fff">3️⃣ 3ª = 1ª</strong> — Opera a cada 5 minutos — <span style="color:var(--green)">GRÁTIS</span></li>
-                <li><strong style="color:#fff">📊 MHI-Filtrado</strong> — 5 velas + Média Móvel + filtro de cor dominante</li>
-                <li><strong style="color:#fff">7️⃣ Quadrante de 7</strong> — 7 velas + MM + contagem de cores</li>
-                <li><strong style="color:#fff">🌊 Fluxo de Velas</strong> — 5 velas mesma cor + MM — <span style="color:var(--green)">GRÁTIS</span></li>
-                <li><strong style="color:#fff">🔄 Reversão</strong> — Padrão alternado g-r-g-r-g / r-g-r-g-r</li>
-                <li><strong style="color:#fff">⏰ M5</strong> — Quadrante de velas de 5 minutos</li>
-            </ul>
-            <p style="color:var(--green);font-size:.8em;margin-top:8px">🔥 Novas estratégias adicionadas regularmente na Loja!</p>
-        </div>
-        
-        <!-- SISTEMA DE VOLTS -->
-        <div class="card">
-            <h2><span class="icon">⚡</span> Sistema de VOLTS (Moedas)</h2>
-            <div class="explain-box">
-                <p><strong>1 VOLT = 1 ciclo de operação</strong>. Todo usuário ganha <strong>1 VOLT grátis por dia</strong> ao fazer login.</p>
-                <p style="margin-top:10px">🧠 <strong>Por que 1 por dia?</strong> O melhor gerenciamento de risco no trading é <strong>1 WIN por dia e sair do mercado</strong>. Disciplina é a chave do sucesso. O robô para automaticamente após 1 vitória (Stop Gain).</p>
-                <p style="margin-top:10px">Se quiser operar mais de 1 vez por dia, você pode <strong>comprar VOLTS via PIX</strong> na Loja do bot. Os VOLTS servem para:</p>
-            </div>
-            <ul class="feat-list">
-                <li>🔁 <strong style="color:#fff">Operar</strong> — Cada ciclo consome 1 VOLT</li>
-                <li>🎨 <strong style="color:#fff">Comprar Skins</strong> — Temas exclusivos para personalizar o bot</li>
-                <li>📊 <strong style="color:#fff">Comprar Estratégias</strong> — Métodos avançados de trading</li>
-                <li>🎁 <strong style="color:#fff">Presentear Amigos</strong> — Compre VOLTS para qualquer e-mail</li>
-            </ul>
-            <div class="highlight">
-                <p>💡 <strong>Dica:</strong> Para presentear um amigo com VOLTS, basta colocar o <strong>e-mail dele</strong> antes de gerar o PIX na Loja. Ele receberá as moedas automaticamente!</p>
-            </div>
-        </div>
-        
-        <!-- FUNCIONALIDADES -->
-        <div class="card">
-            <h2><span class="icon">⚙️</span> Funcionalidades</h2>
-            <div class="stats" style="grid-template-columns: repeat(2,1fr); margin: 10px 0;">
-                <div class="stat"><div class="num">💬</div><div class="label">Chat ao vivo</div></div>
-                <div class="stat"><div class="num">🏆</div><div class="label">Ranking global</div></div>
-                <div class="stat"><div class="num">🎨</div><div class="label">Temas</div></div>
-                <div class="stat"><div class="num">📊</div><div class="label">Indicadores</div></div>
-                <div class="stat"><div class="num">🛒</div><div class="label">Loja</div></div>
-                <div class="stat"><div class="num">☁️</div><div class="label">Firebase</div></div>
-                <div class="stat"><div class="num">🛑</div><div class="label">Stop Gain</div></div>
-                <div class="stat"><div class="num">🔄</div><div class="label">Martingale 2</div></div>
-            </div>
-        </div>
-        
-        <!-- INSTALAÇÃO CELULAR -->
-        <div class="card">
-            <h2><span class="icon">📱</span> Instalar no Celular</h2>
-            <div class="step">
-                <div class="step-num">1</div><div class="step-text"><h4>Instale o Termux</h4><p>App oficial da Play Store.</p><a href="https://play.google.com/store/apps/details?id=com.termux" target="_blank" class="btn btn-playstore">▶️ Baixar Termux</a></div>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div><div class="step-text"><h4>Execute o instalador</h4>
-                    <div class="code-box"><code>bash <(curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/main/install.sh)</code><button class="copy-btn" onclick="copiar(this)">📋 Copiar</button></div>
+            <h2><span class="icon">📊</span> Engenharia Algorítmica & Indicadores</h2>
+            <p>O coração do algoritmo monitora a anatomia de cada ciclo gráfico em tempo real. A execução toma decisões baseadas no cruzamento analítico de dados pesados:</p>
+            
+            <div class="tech-grid">
+                <div class="tech-box">
+                    <h3>Análise de Oscilação</h3>
+                    <p>Filtros simultâneos de RSI e Estocástico identificam zonas extremas de sobrecompra e sobrevenda de ativos.</p>
+                </div>
+                <div class="tech-box">
+                    <h3>Volatilidade Dinâmica</h3>
+                    <p>As Bandas de Bollinger calculam o desvio padrão do preço para prever explosões ou retração de velas.</p>
+                </div>
+                <div class="tech-box">
+                    <h3>Tendência & Volume</h3>
+                    <p>Convergência de Médias Móveis (MM) e MACD garantem que o bot nunca opere contra a macro-tendência do mercado.</p>
+                </div>
+                <div class="tech-box">
+                    <h3>Fase da Vela</h3>
+                    <p>Mapeamento exato do tempo de expiração e contagem de cores dominantes dentro de cada quadrante micro.</p>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-num">3</div><div class="step-text"><h4>Inicie</h4><p>Digite <code style="color:var(--green);background:#000;padding:2px 8px;border-radius:4px">tesla</code></p></div>
+        </div>
+
+        <!-- MOTOR DE ESTRATÉGIAS -->
+        <div class="card">
+            <h2><span class="icon">🛒</span> Catálogo de Estratégias do Ecossistema</h2>
+            <p>Nossa loja integrada alimenta o bot com setups matemáticos específicos que você escolhe direto no terminal:</p>
+            <ul class="feat-list">
+                <li><strong>Tesla-369 Core</strong> — Padrão proprietário de 6 velas simétricas (g-g-g-r-r / r-r-r-g-g) <span class="strat-badge">GRÁTIS</span></li>
+                <li><strong>v_SENSITIVO PRO</strong> — Fusão total de RSI + MM + Bollinger + MACD + Estocástico + Fase <span class="strat-badge pro">PREMIUM</span></li>
+                <li><strong>MHI Filtrado</strong> — Análise de cores do quadrante de 5 velas com filtro de tendência <span class="strat-badge pro">PREMIUM</span></li>
+                <li><strong>Fluxo de Velas</strong> — Rastreamento de momentum em sequência de 5 velas da mesma cor <span class="strat-badge">GRÁTIS</span></li>
+                <li><strong>Estratégia 3ª = 1ª</strong> — Operação cíclica de precisão a cada 5 minutos <span class="strat-badge">GRÁTIS</span></li>
+            </ul>
+        </div>
+
+        <!-- SISTEMA DE VOLTS E GERENCIAMENTO -->
+        <div class="card">
+            <h2><span class="icon">⚡</span> Gestão de Risco & Moeda (Sistema VOLTS)</h2>
+            <div class="explain-box">
+                <p>No trading profissional, o controle emocional e a disciplina superam qualquer técnica. É por isso que o robô utiliza o inovador sistema de <strong>VOLTS</strong> (1 VOLT = 1 Ciclo Completo de Operação).</p>
+                <p style="margin-top: 12px;">Cada usuário recebe <strong>1 VOLT gratuito a cada 24 horas</strong>. O robô é programado com <strong>Stop Gain Automático</strong>: ao obter a primeira vitória (1 WIN), o ciclo se encerra com sucesso e protege o seu capital.</p>
+            </div>
+            <div class="highlight">
+                <p>💡 <strong>Gifting System na Loja:</strong> Se quiser estender o tempo de operação, adquirir novas skins visuais para customizar seu bot ou comprar estratégias Pro, você pode recarregar via PIX. Para presentear o e-mail de um parceiro, basta inserir o endereço de e-mail dele na loja antes de gerar o PIX para os créditos caírem na conta dele.</p>
             </div>
         </div>
-        
-        <!-- DOWNLOAD PC -->
+
+        <!-- INSTALAÇÃO COMPLETA NO TERMUX -->
         <div class="card">
-            <h2><span class="icon">💻</span> Versão para Windows</h2>
-            <p style="color:var(--muted);margin-bottom:12px">Executável portátil. Duplo clique → navegador abre → pronto.</p>
-            <a href="https://github.com/gynbetfc/v-sensitivo-bot/raw/main/dist/Tesla369.exe" class="btn btn-download">⚡ Baixar Tesla369.exe</a>
+            <h2><span class="icon">📱</span> Deployment Autônomo no Celular (Termux)</h2>
+            <p>A arquitetura leve do bot roda perfeitamente em segundo plano via terminal emulando Linux sem consumir bateria.</p>
+            
+            <span class="code-title">Instalação Inicial das Dependências e Criação do Alias Permanente:</span>
+            <div class="code-box">
+                <code>pkg update && pkg install python -y && pip install api-iqoption-faria flask requests websocket-client && echo "alias tesla='curl -4 -s https://raw.githubusercontent.com/gynbetfc/v-sensitivo-bot/refs/heads/main/tesla_369_bot/bot.py | python'" >> ~/.bashrc && source ~/.bashrc</code>
+                <button class="copy-btn" onclick="copiar(this)">📋 COPIAR PROVISIONAMENTO</button>
+            </div>
+
+            <p style="font-size: 0.9em; color: var(--blue);">⚙️ <strong>Como funciona a partir de agora:</strong> Como as dependências já foram instaladas na inicialização acima, você nunca mais precisará esperar downloads de pacotes. Para ligar a sua máquina de lucros, abra seu Termux e execute apenas:</p>
+            <div class="code-box" style="margin-top:10px; padding: 15px 20px;">
+                <code>tesla</code>
+            </div>
+        </div>
+
+        <!-- DEPENDÊNCIAS DE BACKEND -->
+        <div class="card">
+            <h2><span class="icon">📦</span> Dependências Oficiais do Core SaaS</h2>
+            <p>Pacotes e bibliotecas integrados que comandam a conexão em tempo real, servidores locais e tratamento de chamadas Web:</p>
+            <div class="infra-tags">
+                <span class="infra-tag">api-iqoption-faria</span>
+                <span class="infra-tag">flask</span>
+                <span class="infra-tag">requests</span>
+                <span class="infra-tag">websocket-client</span>
+                <span class="infra-tag">firebase-admin</span>
+            </div>
         </div>
         
         <div class="mantra">🌀 O DINHEIRO VEM ATÉ MIM DE TODOS OS LADOS 🌀</div>
-        <div class="footer"><p>⚡ TESLA 369 Bot v6.5.1</p><p style="margin-top:6px">Ferramenta de automação — use com responsabilidade</p></div>
+        <div class="footer"><p>⚡ TESLA 369 QUANT PLATFORM v6.5.1</p><p style="margin-top:6px">Ferramenta de Automação Algorítmica de Alta Performance.</p></div>
     </div>
     
     <script>
         const bg=document.getElementById('bgAnim');
-        ['rgba(120,80,255,0.12)','rgba(240,192,64,0.08)','rgba(0,180,255,0.06)'].forEach(c=>{
+        ['rgba(140,100,255,0.08)','rgba(243,194,68,0.05)','rgba(0,180,255,0.04)'].forEach(c=>{
             const orb=document.createElement('div');orb.className='orb';
-            orb.style.width=orb.style.height=(200+Math.random()*300)+'px';orb.style.background=c;
-            orb.style.top=(20+Math.random()*60)+'%';orb.style.left=(10+Math.random()*80)+'%';
-            orb.style.setProperty('--d',(6+Math.random()*6)+'s');bg.appendChild(orb);
+            orb.style.width=orb.style.height=(250+Math.random()*250)+'px';orb.style.background=c;
+            orb.style.top=(15+Math.random()*60)+'%';orb.style.left=(5+Math.random()*80)+'%';
+            orb.style.setProperty('--d',(7+Math.random()*5)+'s');bg.appendChild(orb);
         });
-        for(let i=0;i<40;i++){
+        for(let i=0;i<35;i++){
             const p=document.createElement('div');p.className='particle';
-            p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(Math.random()*3+1)+'px';
-            p.style.setProperty('--d',(Math.random()*8+6)+'s');p.style.animationDelay=Math.random()*8+'s';bg.appendChild(p);
+            p.style.left=Math.random()*100+'%';p.style.width=p.style.height=(Math.random()*2.5+1)+'px';
+            p.style.setProperty('--d',(Math.random()*7+5)+'s');p.style.animationDelay=Math.random()*7+'s';bg.appendChild(p);
         }
-        function copiar(btn){const c=btn.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(c).then(()=>{btn.textContent='✅ Copiado!';setTimeout(()=>btn.textContent='📋 Copiar',2000)})}
+        function copiar(btn){const c=btn.parentElement.querySelector('code').innerText;navigator.clipboard.writeText(c).then(()=>{btn.textContent='✅ COPIADO!';setTimeout(()=>btn.textContent='📋 COPIAR PROVISIONAMENTO',2000)})}
     </script>
 </body>
-                                                                                                                                               </html>
+</html>
